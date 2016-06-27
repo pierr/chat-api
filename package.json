@@ -1,0 +1,15 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "A chat app.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "chat",
+    "node"
+  ],
+  "author": "Pierre Besson <pierre.besson7+npm@gmail.com>",
+  "license": "MIT"
+}
