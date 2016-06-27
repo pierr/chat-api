@@ -4,12 +4,17 @@
   "description": "A chat app.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node ./src"
   },
   "keywords": [
     "chat",
     "node"
   ],
   "author": "Pierre Besson <pierre.besson7+npm@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sequelize": "^3.23.4",
+    "sqlite3": "^3.1.4"
+  }
 }
