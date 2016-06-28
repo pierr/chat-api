@@ -1,11 +1,8 @@
-const Sequelize = require('sequelize');
 const db = require('./db.js');
-
-db.define('User', {
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING,
-  nickame: Sequelize.STRING,
-  email: Sequelize.STRING
-});
-
-db.authenticate().then(d => console.log('connection active'), err => console.log('error'))
+const schema = require('./schema');
+const populate = require('./populate');
+db.authenticate()
+  .then(() => schema(db))
+  .then(sch => populate(sch))
+  //.then(d => console.log(d))
+  .catch(err => console.log('error'))
