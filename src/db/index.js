@@ -1,8 +1,10 @@
 const db = require('./db.js');
 const schema = require('./schema');
 const populate = require('./populate');
-db.authenticate()
-  .then(() => schema(db))
-  .then(sch => populate(sch))
-  //.then(d => console.log(d))
-  .catch(err => console.log('error'))
+// Init DB
+module.exports = function initDB(){
+  db.authenticate()
+    .then(() => schema(db))
+    .then(sch => populate(sch))
+    .catch(err => console.log('error'))
+}

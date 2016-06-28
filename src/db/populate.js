@@ -10,13 +10,16 @@ function _createFakeUser(){
 
 function _populateUser( userSchema, nb = 10 ){
   return Array.from(Array(nb).keys())
-              .forEach(() => userSchema.create(_createFakeUser())));
+              .forEach(() => userSchema.create(_createFakeUser()));
 }
 
+
 module.exports  =  function populate(schema){
-  return schema.User.sync({force: true})
-      .then(() => _populateUser(schema.user))
-      .then(() => schema.User.findAll())
+  const {User} = schema;
+  return User.sync({force: true})
+      .then(() => _populateUser(User))
+      // log all users
+      .then(() => User.findAll())
       .then(user => user.map((u, j) => u.get('name')))
       .then(d => console.log('userName', d))
       .catch(err => console.log(err));
