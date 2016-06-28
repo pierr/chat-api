@@ -1,21 +1,18 @@
 const initDB = require('./db');
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const registerUserRoutes = require('./routes/user');
 const app = express();
+
+// Express middleware to be able to parse json inside requests.
 app.use(bodyParser.json());
 
+// init the database before registering the routes to have a schema object
 initDB().then(schema => {
-  app.get('/user/:id', (req, res) => {
-    schema.User.findById(req.params.id).then(user => {
-      if (!user) {
-          res.status(404);
-          res.json({error: 'No user found'});
-      } else {
-        res.json(user)
-      };
-    });
 
-  });
+  // register all the routes for the user
+  registerUserRoutes(app, schema.User);
+
+  // start the app
   app.listen(3000, () =>  console.log('Start app'));
 });
