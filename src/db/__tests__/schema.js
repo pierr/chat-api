@@ -1,15 +1,10 @@
-const db = require('../db');
-const createSchema = require('../schema');
-const populate = require('../populate');
+//const db = require('../db');
+//const createSchema = require('../schema');
+//const populate = require('../populate');
+const initDB =  require('../index');
 let schema;
 describe('The database', () => {
-  before(cb => {
-     db.authenticate()
-        .then(() => createSchema(db))
-        .then(s => (schema = s))
-        .then(s => populate(schema))
-        .then(() => cb())
-  });
+  before(cb =>  initDB().then(s => (schema = s)).then(() => cb()));
   describe('The user schema', () => {
     it('should send a user when findOne is called', cb => {
       schema.User.findOne().then(u => {

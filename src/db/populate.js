@@ -1,7 +1,7 @@
   const faker = require('Faker');
-console.log(Object.keys(faker))
-function _createFakeUser(){
+function _createFakeUser(id){
   return {
+    id: `${id}`,
     name: faker.Name.findName(),
     nickName: faker.Internet.userName(),
     email: faker.Internet.email()
@@ -11,7 +11,7 @@ function _createFakeUser(){
 // populate user table given a number of them
 function _populateUser( userSchema /*:Schema*/, nb = 10 /*:number*/){
   return Array.from(Array(nb).keys())
-              .forEach(() => userSchema.create(_createFakeUser()));
+              .forEach(id => userSchema.create(_createFakeUser(id)));
 }
 
 //Populate the whole table

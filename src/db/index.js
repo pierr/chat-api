@@ -1,10 +1,13 @@
 const db = require('./db.js');
-const schema = require('./schema');
+const createSchema = require('./schema');
 const populate = require('./populate');
 // Init DB
 module.exports = function initDB(){
-  db.authenticate()
-    .then(() => schema(db))
-    .then(sch => populate(sch))
-    .catch(err => console.log('error'))
+  let schema;
+  return db.authenticate()
+    .then(() => createSchema(db))
+    .then(sch => (schema = sch))
+    .then(() => populate(schema))
+    .catch(err => console.log('Error on starting and populating DB', err))
+    .then(() => schema)
 }
