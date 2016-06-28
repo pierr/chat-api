@@ -4,8 +4,8 @@
   "description": "A chat app.",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node ./src"
+    "test": "DB_ENV='test' mocha **/__tests__/*.js",
+    "start": "DB_ENV='dev' node ./src"
   },
   "keywords": [
     "chat",
@@ -17,5 +17,9 @@
     "faker": "^3.1.0",
     "sequelize": "^3.23.4",
     "sqlite3": "^3.1.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
   }
 }
