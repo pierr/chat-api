@@ -38,4 +38,16 @@ module.exports = function registerRoomRoutes(app /* :ExpessApp*/ , Room /* :Room
       };
     });
   });
+  // DELETE room by ID route
+  // This coud be more splited in a file but this is useless for now.
+  app.delete('/rooms/:id', (req, res) => {
+    Room.destroy({ where: { id: req.params.id } }).then(nbDelete => {
+      if (nbDelete === 1) {
+            res.json({id: req.params.id});
+      } else {
+        res.status(404)
+        res.json({error: 'No room deleted'})
+      };
+    });
+  });
 }
