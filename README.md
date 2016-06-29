@@ -35,6 +35,8 @@ Have a chat api
 - The admin role would have been done with the login
 - To use the role depending on the logged user, I would have use a token inside the request with a middleware on each request
 - The app should be deployed on heroku
+- Add a swagger catalog
+- Test a GraphQL implementation (to play with it...)
 
 > I think the structure and the test structure is here
 > I list what I could have done with more time, which would have been quite easy...
