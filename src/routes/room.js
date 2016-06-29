@@ -11,6 +11,21 @@ module.exports = function registerRoomRoutes(app /* :ExpessApp*/ , Room /* :Room
       };
     });
   });
+  app.post('/rooms/', (req, res) => {
+    let room = req.body;
+
+    // Add a check to see if it exists
+    // Add validation
+    if(!room || !room.name){
+      res.status(422);
+      res.json({name: 'Your room should have a name'})
+    }
+    room.id = "122233"
+    Room.create(room).then(room => {
+        res.json(room)
+    });
+  });
+
   // GET room by ID route
   // This coud be more splited in a file but this is useless for now.
   app.get('/rooms/:id', (req, res) => {
