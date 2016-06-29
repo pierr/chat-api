@@ -21,6 +21,8 @@ initDB().then(schema => {
       Available routes
       GET /users/:id
       GET /rooms
+      POST /rooms
       GET /rooms/:id
+      DELETE /rooms/:id
     `));
 });
