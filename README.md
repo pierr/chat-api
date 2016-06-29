@@ -34,6 +34,7 @@ Have a chat api
 - A one to many association between the user and the room, for the moderator
 - The admin role would have been done with the login
 - To use the role depending on the logged user, I would have use a token inside the request with a middleware on each request
+- Add test on each request with `isomorphic-fetch`
 - The app should be deployed on heroku
 - Add a swagger catalog
 - Test a GraphQL implementation (to play with it...)
